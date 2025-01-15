@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    platform: linux/x86_64
+    build: .
+    ports:
+      - 1340:80
+    volumes:
+      - ./:/var/www/
+    env_file:
+      - .env
+    container_name: prodev_frontend
+    networks:
+      - servers_external_network
+    tty: true
+networks:
+  servers_external_network:
+    external: true
